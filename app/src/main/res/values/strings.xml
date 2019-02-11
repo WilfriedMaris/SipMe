@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">SipMe</string>
+    <string name="main_button_cocktails">Cocktails</string>
+    <string name="secondary_button_cocktails">Favorieten</string>
+    <string name="title_cocktail_list">Cocktails</string>
+    <string name="title_cocktail_detail">Cocktail Detail</string>
+    <string name="ingredients_title">Ingredienten</string>
+    <string name="recipe_title">Recept</string>
+    <string name="preferences">Instellingen</string>
+    <string name="pref_green_label">Groen</string>
+    <string name="pref_red_label">Rood</string>
+    <string name="pref_orange_label">Oranje</string>
+    <string name="pref_green_option" translatable="false">green</string>
+    <string name="pref_red_option" translatable="false">red</string>
+    <string name="pref_orange_option" translatable="false">orange</string>
+    <string name="theme_title">Thema</string>
+    <string name="pref_color_key" translatable="false">color</string>
+    <string name="default_color_key" translatable="false">green</string>
+</resources>

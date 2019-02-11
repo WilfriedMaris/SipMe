@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "30797808574",
+    "firebase_url": "https://sipme-f8e72.firebaseio.com",
+    "project_id": "sipme-f8e72",
+    "storage_bucket": "sipme-f8e72.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:30797808574:android:283f41ec31ea8465",
+        "android_client_info": {
+          "package_name": "com.test2.wilfriedmaris.sipme2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "30797808574-s92i2m4l5fnuden4efqp9e3qarvo8177.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.test2.wilfriedmaris.sipme2",
+            "certificate_hash": "afc48e49e5fcf357cef158573c982b1509b72d10"
+          }
+        },
+        {
+          "client_id": "30797808574-a8hi364007j4iht4ng4qvn0jbttkdp76.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWednM7Pvalc5DRFPPagl5dUZQs_Qd4mc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "30797808574-a8hi364007j4iht4ng4qvn0jbttkdp76.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
