@@ -16,4 +16,7 @@
     <string name="theme_title">Thema</string>
     <string name="pref_color_key" translatable="false">color</string>
     <string name="default_color_key" translatable="false">green</string>
+    <string name="channel_id" translatable="false">sipme_channel_id</string>
+    <string name="notification_title" translatable="false">It\'s cocktail O\'clock!</string>
+    <string name="notification_content" translatable="false">Zin in een heerlijke cocktail? Druk hier!</string>
 </resources>

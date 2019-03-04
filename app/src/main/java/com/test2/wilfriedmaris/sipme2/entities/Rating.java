@@ -3,9 +3,7 @@ package com.test2.wilfriedmaris.sipme2.entities;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
-
-public class Rating implements Serializable, Parcelable {
+public class Rating implements Parcelable {
     public double average;
     public int raters;
 

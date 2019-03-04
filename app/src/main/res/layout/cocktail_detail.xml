@@ -20,7 +20,7 @@
             android:layout_height="200dp"
             android:layout_marginBottom="20dp"/>
         <RatingBar
-            android:id="@+id/ratingBar"
+            android:id="@+id/rating_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/rate_me"
@@ -28,6 +28,7 @@
             android:numStars="5"
             android:stepSize="1.0"
             android:layout_marginBottom="10dp"
+            android:visibility="gone"
             />
     </LinearLayout>
     <LinearLayout
@@ -58,16 +59,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/ingredient_scroll"
-                        android:orientation="vertical"
-                        android:paddingLeft="20dp"
-                        android:paddingRight="20dp">
-                </LinearLayout>
-                </LinearLayout>
+                    android:id="@+id/ingredient_scroll"
+                    android:orientation="vertical"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -82,14 +77,14 @@
                     android:paddingBottom="5dp"
                     android:layout_marginTop="20dp"
                     />
-                <LinearLayout
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/recipe_scroll"
-                    android:orientation="vertical"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp">
-                </LinearLayout>
+                    android:layout_height="match_parent"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/white"
+                    android:id="@+id/recipe_text"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"/>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

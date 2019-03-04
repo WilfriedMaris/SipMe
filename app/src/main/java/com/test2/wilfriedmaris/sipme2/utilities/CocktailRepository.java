@@ -8,89 +8,80 @@ import com.test2.wilfriedmaris.sipme2.entities.Cocktail;
 import com.test2.wilfriedmaris.sipme2.entities.Ingredient;
 
 public class CocktailRepository {
-    private static final CocktailRepository ourInstance = new CocktailRepository();
-    private static SQLiteDatabase mDb;
+    private static final CocktailRepository sInstance = new CocktailRepository();
+    private static SQLiteDatabase sDatabase;
 
     public static CocktailRepository getInstance(SQLiteDatabase db) {
-        mDb = db;
-        return ourInstance;
+        sDatabase = db;
+        return sInstance;
     }
 
     private CocktailRepository() {}
 
     public Cursor getSingle(int id){
-        return mDb.query(FeedReaderContract.FeedCocktail.TABLE_NAME,
-                null,
-                FeedReaderContract.FeedCocktail.COLUMN_NAME_ID + " = " + id,
-                null,
-                null,
-                null,
-                null);
+        String selection = CocktailContract.CocktailEntry.COLUMN_NAME_ID + " = " + id;
+        return sDatabase.query(CocktailContract.CocktailEntry.TABLE_NAME,
+                null, selection,null,null,null,null);
     }
 
     public Cursor getAll(){
-        return mDb.query(FeedReaderContract.FeedCocktail.TABLE_NAME,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null);
+        return sDatabase.query(CocktailContract.CocktailEntry.TABLE_NAME,
+                null,null,null,null,null,null);
     }
 
     public Cursor getAllIngredients(int id){
-        return mDb.query(FeedReaderContract.FeedIngredient.TABLE_NAME,
-                null,
-                FeedReaderContract.FeedIngredient.COLUMN_NAME_COCKTAIL_ID + " = " + id,
-                null,
-                null,
-                null,
-                null);
+        String selection = CocktailContract.IngredientEntry.COLUMN_NAME_COCKTAIL_ID + " = " + id;
+        return sDatabase.query(CocktailContract.IngredientEntry.TABLE_NAME,
+                null, selection,null,null,null,null);
     }
 
     public Cursor getRating(int id){
-        return mDb.query(FeedReaderContract.FeedRating.TABLE_NAME,
-                null,
-                FeedReaderContract.FeedRating.COLUMN_NAME_COCKTAIL_ID + " = " + id,
-                null,
-                null,
-                null,
-                null);
+        String selection = CocktailContract.RatingEntry.COLUMN_NAME_COCKTAIL_ID + " = " + id;
+        return sDatabase.query(CocktailContract.RatingEntry.TABLE_NAME,
+                null, selection,null,null,null,null);
     }
 
     public void remove(int id){
-        mDb.delete(FeedReaderContract.FeedCocktail.TABLE_NAME,
-                FeedReaderContract.FeedCocktail.COLUMN_NAME_ID + " =" +
+        sDatabase.delete(CocktailContract.CocktailEntry.TABLE_NAME,
+                CocktailContract.CocktailEntry.COLUMN_NAME_ID + " =" +
                         id, null);
-        mDb.delete(FeedReaderContract.FeedRating.TABLE_NAME,
-                FeedReaderContract.FeedRating.COLUMN_NAME_COCKTAIL_ID + " =" +
+        sDatabase.delete(CocktailContract.RatingEntry.TABLE_NAME,
+                CocktailContract.RatingEntry.COLUMN_NAME_COCKTAIL_ID + " =" +
                         id, null);
-        mDb.delete(FeedReaderContract.FeedIngredient.TABLE_NAME,
-                FeedReaderContract.FeedIngredient.COLUMN_NAME_COCKTAIL_ID + " =" +
+        sDatabase.delete(CocktailContract.IngredientEntry.TABLE_NAME,
+                CocktailContract.IngredientEntry.COLUMN_NAME_COCKTAIL_ID + " =" +
                         id, null);
+    }
+
+    public Cursor updateRating(int cocktailId, float givenRating){
+        String where = "cocktail_id" + "=" + cocktailId;
+        ContentValues cv = new ContentValues();
+        cv.put(CocktailContract.RatingEntry.COLUMN_NAME_AVERAGE, givenRating);
+        sDatabase.update(CocktailContract.RatingEntry.TABLE_NAME, cv, where, null);
+        return getRating(cocktailId);
     }
 
     public void add(Cocktail cocktail){
         ContentValues cv = new ContentValues();
-        cv.put(FeedReaderContract.FeedCocktail.COLUMN_NAME_ID, cocktail.id);
-        cv.put(FeedReaderContract.FeedCocktail.COLUMN_NAME_NAME, cocktail.name);
-        cv.put(FeedReaderContract.FeedCocktail.COLUMN_NAME_PICTURE, cocktail.picture);
-        cv.put(FeedReaderContract.FeedCocktail.COLUMN_NAME_RECIPE, cocktail.recipe);
-        mDb.insert(FeedReaderContract.FeedCocktail.TABLE_NAME, null, cv);
+        cv.put(CocktailContract.CocktailEntry.COLUMN_NAME_ID, cocktail.id);
+        cv.put(CocktailContract.CocktailEntry.COLUMN_NAME_NAME, cocktail.name);
+        cv.put(CocktailContract.CocktailEntry.COLUMN_NAME_PICTURE, cocktail.picture);
+        cv.put(CocktailContract.CocktailEntry.COLUMN_NAME_RECIPE, cocktail.recipe);
+        sDatabase.insert(CocktailContract.CocktailEntry.TABLE_NAME, null, cv);
 
         ContentValues cv2 = new ContentValues();
-        cv2.put(FeedReaderContract.FeedRating.COLUMN_NAME_AVERAGE, cocktail.rating.average);
-        cv2.put(FeedReaderContract.FeedRating.COLUMN_NAME_RATERS, cocktail.rating.raters);
-        cv2.put(FeedReaderContract.FeedRating.COLUMN_NAME_COCKTAIL_ID, cocktail.id);
-        mDb.insert(FeedReaderContract.FeedRating.TABLE_NAME, null, cv2);
+        cv2.put(CocktailContract.RatingEntry.COLUMN_NAME_AVERAGE, cocktail.rating.average);
+        cv2.put(CocktailContract.RatingEntry.COLUMN_NAME_RATERS, cocktail.rating.raters);
+        cv2.put(CocktailContract.RatingEntry.COLUMN_NAME_COCKTAIL_ID, cocktail.id);
+        sDatabase.insert(CocktailContract.RatingEntry.TABLE_NAME, null, cv2);
 
         for (Ingredient ing : cocktail.ingredients){
             ContentValues cv3 = new ContentValues();
-            cv3.put(FeedReaderContract.FeedIngredient.COLUMN_NAME_NAME, ing.name);
-            cv3.put(FeedReaderContract.FeedIngredient.COLUMN_NAME_AMOUNT, ing.amount);
-            cv3.put(FeedReaderContract.FeedIngredient.COLUMN_NAME_MEASURE, ing.measure);
-            cv3.put(FeedReaderContract.FeedIngredient.COLUMN_NAME_COCKTAIL_ID, cocktail.id);
-            mDb.insert(FeedReaderContract.FeedIngredient.TABLE_NAME, null, cv3);
+            cv3.put(CocktailContract.IngredientEntry.COLUMN_NAME_NAME, ing.name);
+            cv3.put(CocktailContract.IngredientEntry.COLUMN_NAME_AMOUNT, ing.amount);
+            cv3.put(CocktailContract.IngredientEntry.COLUMN_NAME_MEASURE, ing.measure);
+            cv3.put(CocktailContract.IngredientEntry.COLUMN_NAME_COCKTAIL_ID, cocktail.id);
+            sDatabase.insert(CocktailContract.IngredientEntry.TABLE_NAME, null, cv3);
         }
     }
 }

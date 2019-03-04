@@ -15,32 +15,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        final String SQL_STATEMENT_1 = "CREATE TABLE " + FeedReaderContract.FeedCocktail.TABLE_NAME + " (" +
-                FeedReaderContract.FeedCocktail.COLUMN_NAME_ID + " INTEGER PRIMARY KEY, " +
-                FeedReaderContract.FeedCocktail.COLUMN_NAME_NAME + " TEXT NOT NULL, " +
-                FeedReaderContract.FeedCocktail.COLUMN_NAME_PICTURE + " TEXT NOT NULL, " +
-                FeedReaderContract.FeedCocktail.COLUMN_NAME_RECIPE + " TEXT NOT NULL" +
+        final String SQL_STATEMENT_1 = "CREATE TABLE " + CocktailContract.CocktailEntry.TABLE_NAME + " (" +
+                CocktailContract.CocktailEntry.COLUMN_NAME_ID + " INTEGER PRIMARY KEY, " +
+                CocktailContract.CocktailEntry.COLUMN_NAME_NAME + " TEXT NOT NULL, " +
+                CocktailContract.CocktailEntry.COLUMN_NAME_PICTURE + " TEXT NOT NULL, " +
+                CocktailContract.CocktailEntry.COLUMN_NAME_RECIPE + " TEXT NOT NULL" +
                 "); ";
 
-        final String SQL_STATEMENT_2 = "CREATE TABLE " + FeedReaderContract.FeedIngredient.TABLE_NAME + " (" +
-                FeedReaderContract.FeedIngredient.COLUMN_NAME_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                FeedReaderContract.FeedIngredient.COLUMN_NAME_NAME + " TEXT NOT NULL, " +
-                FeedReaderContract.FeedIngredient.COLUMN_NAME_AMOUNT + " REAL, " +
-                FeedReaderContract.FeedIngredient.COLUMN_NAME_MEASURE + " TEXT, " +
-                FeedReaderContract.FeedIngredient.COLUMN_NAME_COCKTAIL_ID + " INTEGER NOT NULL, " +
-                "FOREIGN KEY(" + FeedReaderContract.FeedIngredient.COLUMN_NAME_COCKTAIL_ID +
-                ") REFERENCES " + FeedReaderContract.FeedCocktail.TABLE_NAME +
-                "(" + FeedReaderContract.FeedCocktail.COLUMN_NAME_ID + ")" +
+        final String SQL_STATEMENT_2 = "CREATE TABLE " + CocktailContract.IngredientEntry.TABLE_NAME + " (" +
+                CocktailContract.IngredientEntry.COLUMN_NAME_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                CocktailContract.IngredientEntry.COLUMN_NAME_NAME + " TEXT NOT NULL, " +
+                CocktailContract.IngredientEntry.COLUMN_NAME_AMOUNT + " REAL, " +
+                CocktailContract.IngredientEntry.COLUMN_NAME_MEASURE + " TEXT, " +
+                CocktailContract.IngredientEntry.COLUMN_NAME_COCKTAIL_ID + " INTEGER NOT NULL, " +
+                "FOREIGN KEY(" + CocktailContract.IngredientEntry.COLUMN_NAME_COCKTAIL_ID +
+                ") REFERENCES " + CocktailContract.CocktailEntry.TABLE_NAME +
+                "(" + CocktailContract.CocktailEntry.COLUMN_NAME_ID + ")" +
                 "); ";
 
-        final String SQL_STATEMENT_3 = "CREATE TABLE " + FeedReaderContract.FeedRating.TABLE_NAME + " (" +
-                FeedReaderContract.FeedRating.COLUMN_NAME_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                FeedReaderContract.FeedRating.COLUMN_NAME_AVERAGE + " REAL NOT NULL, " +
-                FeedReaderContract.FeedRating.COLUMN_NAME_RATERS + " INTEGER NOT NULL, " +
-                FeedReaderContract.FeedRating.COLUMN_NAME_COCKTAIL_ID + " INTEGER NOT NULL, " +
-                "FOREIGN KEY(" + FeedReaderContract.FeedRating.COLUMN_NAME_COCKTAIL_ID +
-                ") REFERENCES " + FeedReaderContract.FeedCocktail.TABLE_NAME +
-                "(" + FeedReaderContract.FeedCocktail.COLUMN_NAME_ID + ")" +
+        final String SQL_STATEMENT_3 = "CREATE TABLE " + CocktailContract.RatingEntry.TABLE_NAME + " (" +
+                CocktailContract.RatingEntry.COLUMN_NAME_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                CocktailContract.RatingEntry.COLUMN_NAME_AVERAGE + " REAL NOT NULL, " +
+                CocktailContract.RatingEntry.COLUMN_NAME_RATERS + " INTEGER NOT NULL, " +
+                CocktailContract.RatingEntry.COLUMN_NAME_COCKTAIL_ID + " INTEGER NOT NULL, " +
+                "FOREIGN KEY(" + CocktailContract.RatingEntry.COLUMN_NAME_COCKTAIL_ID +
+                ") REFERENCES " + CocktailContract.CocktailEntry.TABLE_NAME +
+                "(" + CocktailContract.CocktailEntry.COLUMN_NAME_ID + ")" +
                 "); ";
 
         db.execSQL(SQL_STATEMENT_1);
@@ -50,9 +50,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + FeedReaderContract.FeedCocktail.TABLE_NAME);
-        db.execSQL("DROP TABLE IF EXISTS " + FeedReaderContract.FeedIngredient.TABLE_NAME);
-        db.execSQL("DROP TABLE IF EXISTS " + FeedReaderContract.FeedRating.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + CocktailContract.CocktailEntry.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + CocktailContract.IngredientEntry.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + CocktailContract.RatingEntry.TABLE_NAME);
         onCreate(db);
     }
 }

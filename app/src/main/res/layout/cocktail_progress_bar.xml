@@ -9,5 +9,4 @@
     android:scaleX="0.10"
     android:scaleY="0.10"
     android:indeterminateDrawable="@drawable/spinning_loader"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"/>
+    xmlns:android="http://schemas.android.com/apk/res/android"/>

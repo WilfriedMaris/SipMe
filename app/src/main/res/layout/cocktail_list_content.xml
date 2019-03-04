@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:layout_weight="10"
-    >
+    android:layout_weight="10">
 
     <ImageView
         android:id="@+id/img_view_list_item"
@@ -13,8 +12,7 @@
         android:scaleType="centerCrop"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
-        android:layout_weight="3"
-        />
+        android:layout_weight="3"/>
 
     <LinearLayout
         android:layout_width="0dp"
@@ -23,8 +21,7 @@
         android:orientation="vertical"
         android:layout_marginLeft="20dp"
         android:id="@+id/text_layout_title_ing"
-        android:layout_gravity="center_vertical"
-        >
+        android:layout_gravity="center_vertical">
         <TextView
             android:id="@+id/content"
             android:layout_width="match_parent"
@@ -51,6 +48,5 @@
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
         android:backgroundTint="@android:color/transparent"
-        android:src="@drawable/ic_star_border_black_24dp"
-        />
+        android:src="@drawable/ic_star_border_black_24dp"/>
 </LinearLayout>

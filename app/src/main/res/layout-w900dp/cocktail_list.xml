@@ -10,7 +10,7 @@
     android:divider="?android:attr/dividerHorizontal"
     android:orientation="horizontal"
     android:showDividers="middle"
-    tools:context=".CocktailListActivity">
+    tools:context=".activities.CocktailListActivity">
 
     <!--
     This layout is a two-pane layout for the Cocktails
@@ -29,7 +29,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-            tools:context=".CocktailListActivity"
+            tools:context=".activities.CocktailListActivity"
             tools:listitem="@layout/cocktail_list_content" />
         <include layout="@layout/cocktail_progress_bar"
             android:id="@+id/pb_loading_indicator"/>

@@ -3,9 +3,7 @@ package com.test2.wilfriedmaris.sipme2.entities;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
-
-public class Ingredient implements Serializable, Parcelable {
+public class Ingredient implements Parcelable {
     public String name;
     public String measure;
     public double amount;
@@ -16,6 +14,14 @@ public class Ingredient implements Serializable, Parcelable {
         this.name = name;
         this.measure = measure;
         this.amount = amount;
+    }
+
+    public String amountDisplayValue(){
+        String displayValue = "";
+        if (this.amount > 0){
+            displayValue = this.amount + " " + this.measure;
+        }
+        return displayValue;
     }
 
     protected Ingredient(Parcel in) {

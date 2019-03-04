@@ -1,13 +1,13 @@
-package com.test2.wilfriedmaris.sipme2.utilities;
+package com.test2.wilfriedmaris.sipme2.activities;
 
 import android.content.Intent;
 
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.test2.wilfriedmaris.sipme2.R;
-import com.test2.wilfriedmaris.sipme2.SettingsActivity;
 
 import io.multimoon.colorful.CAppCompatActivity;
 
@@ -30,5 +30,15 @@ public class BaseActivity extends CAppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void logd(String message) {
+        String person = "WM: ";
+        Log.d(this.getClass().getSimpleName(), person + message);
+    }
+
+    public void loge(String message) {
+        String person = "WM: ";
+        Log.e(this.getClass().getSimpleName(), person + message);
     }
 }
